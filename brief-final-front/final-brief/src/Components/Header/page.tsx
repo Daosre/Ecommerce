@@ -7,7 +7,7 @@ import LogOut from '../Logout/page'
 const Header = () => {
   return (
       <div className='w-full border-2 border-black lg:flex lg:flex-col'>
-          <div className='relative lg:w-full'>
+          <div className='relative'>
               <Logo />
               <LogOut />
               <Link href={'/Admiin'}>
