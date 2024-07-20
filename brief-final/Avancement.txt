@@ -1,0 +1,21 @@
+Inscription (Emailing) avec un panier crée : ✅
+Connection : ✅
+
+
+(Admin)
+Ajouter un produit :  ✅
+Modifier un produit : ✅
+Supprimer un produit :✅
+Crée une catégorie : ✅
+Regarder toute les catégorie : ✅
+Supprimer une catégorie : ✅
+Modifier une catégorie : ✅
+
+
+
+Faire un filtrage des produits : ✅
+
+Ajouter des produits dans un panier : ❌⌛️
+Afficher tout les produits :  ✅
+
+Faire un file upload: ✅

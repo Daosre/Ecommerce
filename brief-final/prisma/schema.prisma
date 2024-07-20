@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  Role     String
+  token    String?
+  isActive Boolean    @default(false)
+  gdpr     DateTime   @default(now())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  panier Panier?
+  role Role @relation(fields: [Role], references: [id])
+}
+
+model Role {
+  id String @id @default(uuid())
+  name String @unique
+  user User[]
+}
+
+model Product {
+  id String @id @default(uuid())
+  name String 
+  description String
+  quantity  Int
+  price Float
+  image String
+  created_at DateTime @default(now())
+  update_at DateTime @updatedAt
+  CategoryId String
+  category Category @relation(fields: [CategoryId], references: [id])
+  panier Panier[]
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String
+  created_at DateTime @default(now())
+  update_at DateTime @updatedAt
+  product Product[]
+}
+
+model Panier {
+  id String @id @default(uuid())
+  userId String @unique
+  product Product[]
+  user User @relation(fields: [userId], references: [id])
+}
