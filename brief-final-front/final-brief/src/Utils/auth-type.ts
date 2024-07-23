@@ -8,3 +8,14 @@ export type RegisterProps = {
     email: string,
     password: string
 }
+
+export type UserProps = {
+        id: string,
+        name: string,
+        email: string,
+        Role: string,
+        isActive: boolean,
+        gdpr: string,
+        created_at: string,
+        updated_at: string
+}

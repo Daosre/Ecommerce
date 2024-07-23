@@ -1,5 +1,5 @@
 'use client'
-import { GetAllProduct } from '@/Services/product'
+import { DeleteProduct, GetAllProduct } from '@/Services/product'
 import { AddProductProps, ProductProps } from '@/Utils/product-type'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Table from '@mui/material/Table';
@@ -9,10 +9,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { RiDeleteBackFill } from 'react-icons/ri';
 
 
 const Tableau = ({ productList, setproductList } : { productList: ProductProps[], setproductList: Dispatch<SetStateAction<ProductProps[]>> }) => {
-    const [product, setproduct] = useState<AddProductProps[]>()
 
     useEffect(() => {
         GetAllProduct().then((res) => {
@@ -42,7 +42,15 @@ const Tableau = ({ productList, setproductList } : { productList: ProductProps[]
                                             {element.name}
                                         </TableCell>
                                         <TableCell align="center">{element.quantity}</TableCell>
-                                        <TableCell align="center">{element.price}€ / U</TableCell>
+                                    <TableCell align="center" className='flex justify-around'>{element.price}€ / U <RiDeleteBackFill className='cursor-pointer' onClick={() => {
+                                      DeleteProduct(element.id).then((res) => {
+                                        console.log(res);
+                                
+                                      })
+                                      // setTimeout(() => {
+                                      //   window.location.reload()
+                                      // }, 1000);
+                                        }} /></TableCell>
                                     </TableRow>
                                 )
                             })}

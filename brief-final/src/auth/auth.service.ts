@@ -119,11 +119,13 @@ export class AuthService {
       }
     })
     }
-    return await this.prisma.user.delete({
+     await this.prisma.user.delete({
       where: {
          id: id
        }
-    })
+       
+     })
+     return {message: "Supprimer avec succes"}
   }
   
   //Rédupération de tout les Users

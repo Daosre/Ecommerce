@@ -26,8 +26,12 @@ const AdminPanel = () => {
           </Link>
           <Link href={'Admiin/Role'}>
               <button className='border border-black p-2 rounded-lg w-1/2'>Role</button>
+                  </Link>
+                  <Link href={'Admiin/User'}>
+              <button className='border border-black p-2 rounded-lg w-1/2'>User</button>
               </Link>
               </div>
+              
           </div>
           <Footer/>
     </div>

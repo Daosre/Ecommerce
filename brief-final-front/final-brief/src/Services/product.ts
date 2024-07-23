@@ -11,7 +11,7 @@ export async function AddProduct(Productprops: AddProductProps) {
 			"content-type": "application/json;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-			Authorization: `Bearer ${window.localStorage.getItem("role")}`
+			Authorization: `Bearer ${window.localStorage.getItem("jwt")}`
 		},
 	};
 	return axios
@@ -38,13 +38,13 @@ export async function AddProduct(Productprops: AddProductProps) {
 		});
 }
 
-//Avoir tout produit
+//Avoir tout les produit
 export async function GetAllProduct() {
 	const url = `${process.env.NEXT_PUBLIC_API_URL}product/all`;
 
 	const axiosConfig = {
 		headers: {
-			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"content-type": "application/json;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
 		},
@@ -65,6 +65,38 @@ export async function GetAllProduct() {
 		});
 }
 
+//Supprimer un produit
+export async function DeleteProduct(id: string) {
+	const url = `${process.env.NEXT_PUBLIC_API_URL}product/delete/${id}`;
+
+	const axiosConfig = {
+		headers: {
+			"content-type": "application/json;charset=utf-8",
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+			Authorization: `Bearer ${window.localStorage.getItem("jwt")}`
+		},
+	};
+	return axios
+		.delete(
+			url,
+			axiosConfig,
+		)
+		.then((res) => {
+			toast.success(res.data.message, {
+				position: 'top-center'
+			});
+				return res
+		})
+		
+		.catch((e) => {
+			toast.error(e.response.data.message, {
+				position: 'top-right',
+			});
+			return e;
+		});
+}
+
 //Recherche
 export async function SearchProduct(product: string | undefined) {
 	if (!product) {
@@ -73,7 +105,7 @@ export async function SearchProduct(product: string | undefined) {
 	const url = `${process.env.NEXT_PUBLIC_API_URL}product/search/${product}`;
 	const axiosConfig = {
 		headers: {
-			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"content-type": "application/json;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
 		},

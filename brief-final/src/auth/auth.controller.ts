@@ -18,7 +18,7 @@ export class AuthController {
     return this.authService.SignIn(dto)
   }
 
-  // @UseGuards(JwtGuard, AdminGuard)
+  @UseGuards(JwtGuard, AdminGuard)
   @Delete('/delete/:id')
   DeleteUser(@Param('id') id: string) {
     return this.authService.DeleteUser(id)

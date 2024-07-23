@@ -72,14 +72,15 @@ export class ProductService {
                 id: id
             }
         })
-        if (!existingProduct || !existingProduct) {
+        if (!existingProduct || !existingProduct.id) {
             throw new ForbiddenException('Unexisting Id')
         }
-        return this.prisma.product.delete({
+        await this.prisma.product.delete({
             where: {
                 id: id
             }
         })
+        return {message: "Ta bien delete"}
     }
 
     async FilterProduct(dto: FilterProductDto) {

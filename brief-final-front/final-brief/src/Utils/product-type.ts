@@ -8,6 +8,7 @@ export type AddProductProps = {
 }
 
 export type ProductProps = {
+    id: string,
     name: string,
     description: string,
     image: string,

@@ -51,7 +51,10 @@ const CategoryPage = () => {
                                             {element.name}
                                             <MdEdit className='cursor-pointer' />
                                       <MdDelete className='cursor-pointer' onClick={() => {
-                                        DeleteCategory(element.id)}} />
+                                        DeleteCategory(element.id)
+                                      setTimeout(() => {
+                                        window.location.reload()
+                                      }, 1500);}} />
                                         </TableCell>
                                     </TableRow>
                                 )

@@ -14,7 +14,7 @@ export class ProductController {
     return this.productService.getAllProduct()
   }
 
-  // @UseGuards(JwtGuard, AdminGuard)
+  @UseGuards(JwtGuard, AdminGuard)
   @Post('/new')
   AddProduct(@Body() dto: InsertProductDto) {
     console.log(dto);

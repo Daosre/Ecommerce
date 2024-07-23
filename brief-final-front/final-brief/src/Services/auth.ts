@@ -64,3 +64,62 @@ export async function SignUUp(authProps: RegisterProps) {
 			return e;
 		});
 }
+
+//Avoir tout les Users
+export async function GetAllUser() {
+	const url = `${process.env.NEXT_PUBLIC_API_URL}auth/all`;
+
+	const axiosConfig = {
+		headers: {
+			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+			Authorization: `Bearer ${window.localStorage.getItem("jwt")}`,
+		},
+	};
+	return axios
+		.get(
+			url,
+			axiosConfig,
+		)
+		.then((res) => {
+			return res;
+		})
+		.catch((e) => {
+			toast.error(e.response.data.message, {
+				position: "top-center",
+			});
+			return e;
+		});
+}
+
+//Delete un User
+export async function DeleteUser(id: string) {
+	const url = `${process.env.NEXT_PUBLIC_API_URL}auth/delete/${id}`;
+
+	const axiosConfig = {
+		headers: {
+			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+			Authorization: `Bearer ${window.localStorage.getItem("jwt")}`,
+		},
+	};
+	return axios
+		.delete(
+			url,
+			axiosConfig,
+		)
+		.then((res) => {
+			return toast.success(res.data.message)
+		})
+		.catch((e) => {
+			toast.error(e.response.data.message, {
+				position: "top-center",
+			});
+			return e;
+		});
+}
+
+
+	

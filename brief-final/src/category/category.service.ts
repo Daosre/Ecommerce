@@ -58,7 +58,7 @@ export class CategoryService {
         }
         await this.prisma.category.delete({
             where: {
-                id: id
+                id:id
             }
         })
         return {message: 'Supprimer avec success'}

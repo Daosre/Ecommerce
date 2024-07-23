@@ -38,7 +38,7 @@ export async function EditCategory(category: CategoryList) {
 			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            Authorization: `Bearer ${window.localStorage.getItem("role")}`,
+            Authorization: `Bearer ${window.localStorage.getItem("jwt")}`,
         },
 	};
 	return axios
@@ -66,10 +66,10 @@ export async function DeleteCategory(id: CategoryList) {
 
 	const axiosConfig = {
 		headers: {
-			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"content-type": "application/json;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            Authorization: `Bearer ${window.localStorage.getItem("role")}`,
+            Authorization: `Bearer ${window.localStorage.getItem("jwt")}`,
         },
 	};
 	return axios
@@ -94,10 +94,10 @@ export async function CreateCategoory(name: CreateCatProps) {
 
 	const axiosConfig = {
 		headers: {
-			"content-type": "application/x-www-form-urlencoded;charset=utf-8",
+			"content-type": "application/json;charset=utf-8",
 			"Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            Authorization: `Bearer ${window.localStorage.getItem("role")}`,
+            Authorization: `Bearer ${window.localStorage.getItem("jwt")}`,
         },
 	};
 	return axios

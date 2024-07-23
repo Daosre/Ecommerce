@@ -20,7 +20,8 @@ export class EmailService {
 
   async sendUserConfirmation(user: User, token: string) {
     const url = `${this.config.get('SERVER_URL')}/activate/${token}`;
-    const emailHtml = `<p>Hey ${user.name},</p>
+    const emailHtml = `
+    <h1>Hey ${user.name},</h1>
         <p>Bienvenue dans la Cochonade 👍</p>
         <p>Veuillez  <a href='${url}'>cliquer ici</a> pour valider votre compte</p>
         <p>Si vous êtes pas l'autheur de cet création veuillez ignorer cet e-mail</p>
